@@ -1,12 +1,15 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Ahmed Mohammed Ahmed | Software Engineering Resume</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --bg: #07090e;
@@ -22,8 +25,15 @@
       --font-mono: 'JetBrains Mono', monospace;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       background-color: var(--bg);
@@ -57,13 +67,41 @@
       opacity: 0.35;
       animation: floatOrb 16s ease-in-out infinite alternate;
     }
-    .glow-orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #00f0ff, transparent); top: -100px; left: -100px; }
-    .glow-orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, #a855f7, transparent); bottom: -150px; right: -150px; animation-duration: 22s; }
-    .glow-orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, #3b82f6, transparent); top: 40%; left: 60%; animation-duration: 18s; }
+
+    .glow-orb-1 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, #00f0ff, transparent);
+      top: -100px;
+      left: -100px;
+    }
+
+    .glow-orb-2 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, #a855f7, transparent);
+      bottom: -150px;
+      right: -150px;
+      animation-duration: 22s;
+    }
+
+    .glow-orb-3 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #3b82f6, transparent);
+      top: 40%;
+      left: 60%;
+      animation-duration: 18s;
+    }
 
     @keyframes floatOrb {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(80px, 60px) scale(1.15); }
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      100% {
+        transform: translate(80px, 60px) scale(1.15);
+      }
     }
 
     /* Top Reading Progress Bar */
@@ -101,8 +139,15 @@
     }
 
     @keyframes slideDown {
-      from { transform: translateY(-40px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+      from {
+        transform: translateY(-40px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     .hud-left {
@@ -123,6 +168,7 @@
       font-family: var(--font-mono);
       color: #34d399;
     }
+
     .status-dot {
       width: 7px;
       height: 7px;
@@ -131,9 +177,19 @@
       box-shadow: 0 0 8px #10b981;
       animation: pulseDot 2s infinite;
     }
+
     @keyframes pulseDot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+      }
     }
 
     .hud-title {
@@ -165,6 +221,7 @@
       text-decoration: none;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     .btn-hud:hover {
       background: rgba(0, 240, 255, 0.15);
       border-color: rgba(0, 240, 255, 0.5);
@@ -180,6 +237,7 @@
       font-weight: 700;
       box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
     }
+
     .btn-primary-hud:hover {
       background: linear-gradient(135deg, #38bdf8, #60a5fa);
       color: #000;
@@ -207,11 +265,11 @@
       padding: 40px 48px;
       margin-bottom: 24px;
       box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8),
-                  0 0 1px 1px rgba(255, 255, 255, 0.05);
+        0 0 1px 1px rgba(255, 255, 255, 0.05);
       transform-style: preserve-3d;
       transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-                  border-color 0.3s ease,
-                  box-shadow 0.3s ease;
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
       position: relative;
       overflow: hidden;
     }
@@ -230,7 +288,7 @@
     .card-3d:hover {
       border-color: rgba(0, 240, 255, 0.3);
       box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9),
-                  0 0 30px rgba(0, 240, 255, 0.15);
+        0 0 30px rgba(0, 240, 255, 0.15);
     }
 
     /* Resume Header */
@@ -268,6 +326,7 @@
       color: var(--text-muted);
       overflow-wrap: anywhere;
     }
+
     .contact a {
       color: #e2e8f0;
       text-decoration: none;
@@ -275,6 +334,7 @@
       padding-bottom: 1px;
       transition: all 0.2s;
     }
+
     .contact a:hover {
       color: #00f0ff;
       border-bottom-color: #00f0ff;
@@ -323,6 +383,7 @@
       font-size: 15px;
       color: #fff;
     }
+
     .sub {
       font-size: 13.5px;
       color: #38bdf8;
@@ -339,11 +400,13 @@
       border-radius: 10px;
       transition: all 0.2s ease;
     }
+
     .skills p:hover {
       background: rgba(0, 240, 255, 0.04);
       border-color: rgba(0, 240, 255, 0.2);
       transform: translateX(4px);
     }
+
     .skills b {
       color: #00f0ff;
       font-weight: 600;
@@ -359,6 +422,7 @@
       border-radius: 14px;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     .project:hover {
       background: rgba(255, 255, 255, 0.04);
       border-color: rgba(168, 85, 247, 0.35);
@@ -371,6 +435,7 @@
       font-size: 15px;
       color: #fff;
     }
+
     .pt a {
       color: #fff;
       text-decoration: none;
@@ -379,9 +444,11 @@
       gap: 6px;
       transition: color 0.2s;
     }
+
     .pt a:hover {
       color: #00f0ff;
     }
+
     .pt a::after {
       content: '↗';
       font-size: 12px;
@@ -399,11 +466,13 @@
       padding-left: 20px;
       margin-top: 6px;
     }
+
     li {
       margin-bottom: 6px;
       color: #cbd5e1;
       line-height: 1.6;
     }
+
     li::marker {
       color: #00f0ff;
     }
@@ -416,6 +485,7 @@
       list-style-type: none;
       padding-left: 0;
     }
+
     section:last-of-type li {
       padding: 10px 14px;
       background: rgba(255, 255, 255, 0.02);
@@ -426,11 +496,13 @@
       gap: 8px;
       transition: all 0.2s;
     }
+
     section:last-of-type li::before {
       content: '✦';
       color: #a855f7;
       font-size: 11px;
     }
+
     section:last-of-type li:hover {
       border-color: rgba(168, 85, 247, 0.3);
       background: rgba(168, 85, 247, 0.05);
@@ -447,6 +519,7 @@
       gap: 10px;
       z-index: 60;
     }
+
     .dock-btn {
       width: 44px;
       height: 44px;
@@ -462,6 +535,7 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     .dock-btn:hover {
       transform: scale(1.1);
       background: #00f0ff;
@@ -476,17 +550,29 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
       .hud-actions {
         width: 100%;
         justify-content: space-between;
       }
+
       .card-3d {
         padding: 24px 20px;
         border-radius: 18px;
       }
-      h1 { font-size: 26px; }
-      .eduhead { flex-direction: column; gap: 4px; }
-      section:last-of-type ul { grid-template-columns: 1fr; }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .eduhead {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      section:last-of-type ul {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* =========================================================
@@ -504,7 +590,11 @@
         font: 9pt/1.28 Arial, Helvetica, sans-serif !important;
       }
 
-      #bg-canvas, .glow-orb, #scroll-progress, .hud-bar, .floating-dock {
+      #bg-canvas,
+      .glow-orb,
+      #scroll-progress,
+      .hud-bar,
+      .floating-dock {
         display: none !important;
       }
 
@@ -526,7 +616,9 @@
         transform: none !important;
       }
 
-      .card-3d::before { display: none !important; }
+      .card-3d::before {
+        display: none !important;
+      }
 
       header {
         border-bottom: 2px solid #172033 !important;
@@ -556,6 +648,7 @@
         line-height: 1.4 !important;
         color: #526174 !important;
       }
+
       .contact a {
         color: inherit !important;
         text-decoration: none !important;
@@ -576,7 +669,10 @@
         color: #172033 !important;
         font-family: inherit !important;
       }
-      h2::before { display: none !important; }
+
+      h2::before {
+        display: none !important;
+      }
 
       p {
         margin: 0 0 2px !important;
@@ -591,7 +687,10 @@
         border-radius: 0 !important;
         transform: none !important;
       }
-      .skills b { color: #172033 !important; }
+
+      .skills b {
+        color: #172033 !important;
+      }
 
       .project {
         margin-bottom: 4px !important;
@@ -601,13 +700,20 @@
         box-shadow: none !important;
         transform: none !important;
       }
+
       .pt {
         font-weight: bold !important;
         font-size: 9pt !important;
         color: #172033 !important;
       }
-      .pt a { color: #172033 !important; }
-      .pt a::after { display: none !important; }
+
+      .pt a {
+        color: #172033 !important;
+      }
+
+      .pt a::after {
+        display: none !important;
+      }
 
       .tech {
         font-size: 7.7pt !important;
@@ -621,11 +727,15 @@
         padding: 0 !important;
         margin: 2px 0 0 15px !important;
       }
+
       li {
         margin: 0 0 1px !important;
         color: #172033 !important;
       }
-      li::marker { color: #172033 !important; }
+
+      li::marker {
+        color: #172033 !important;
+      }
 
       .eduhead {
         display: flex !important;
@@ -635,6 +745,7 @@
         font-size: 9pt !important;
         color: #172033 !important;
       }
+
       .sub {
         font-size: 8pt !important;
         color: #526174 !important;
@@ -647,16 +758,21 @@
         list-style-type: disc !important;
         padding-left: 15px !important;
       }
+
       section:last-of-type li {
         padding: 0 !important;
         background: transparent !important;
         border: none !important;
         display: list-item !important;
       }
-      section:last-of-type li::before { display: none !important; }
+
+      section:last-of-type li::before {
+        display: none !important;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Interactive 3D Canvas Background -->
@@ -692,23 +808,32 @@
     <main class="card-3d" id="resume-card">
       <header>
         <h1>Ahmed Mohammed Ahmed</h1>
-        <div class="role">Computer Science Student | Software Engineering | Front-End & Back-End Development | Aspiring Full-Stack Developer</div>
+        <div class="role">Computer Science Student | Software Engineering | Front-End & Back-End Development | Aspiring
+          Full-Stack Developer</div>
         <div class="contact">
-          Suez, Egypt &nbsp;•&nbsp; +20 1121742874 &nbsp;•&nbsp; <a href="mailto:ahmedmohammed09988771@gmail.com">ahmedmohammed09988771@gmail.com</a><br>
-          GitHub: <a href="https://github.com/ahmedmohammed977" target="_blank">github.com/ahmedmohammed977</a> &nbsp;•&nbsp; Portfolio: <a href="https://ahmedmohammed977.github.io/" target="_blank">ahmedmohammed977.github.io</a>
+          Suez, Egypt &nbsp;•&nbsp; +20 1121742874 &nbsp;•&nbsp; <a
+            href="mailto:ahmedmohammed09988771@gmail.com">ahmedmohammed09988771@gmail.com</a><br>
+          GitHub: <a href="https://github.com/ahmedmohammed977" target="_blank">github.com/ahmedmohammed977</a>
+          &nbsp;•&nbsp; Portfolio: <a href="https://port-folio-eng-ahmed-mohammed.vercel.app/"
+            target="_blank">ahmedmohammed977.github.io</a>
         </div>
       </header>
 
       <section>
         <h2>Professional Summary</h2>
-        <p>Third-year Computer Science student at Galala University specializing in Software Engineering. Built personal and academic projects in web and desktop development using Angular, TypeScript, JavaScript, HTML, CSS, Bootstrap, and Python. Interested in writing maintainable software, solving practical problems, and currently expanding knowledge of Artificial Intelligence and Machine Learning.</p>
+        <p>Third-year Computer Science student at Galala University specializing in Software Engineering. Built personal
+          and academic projects in web and desktop development using Angular, TypeScript, JavaScript, HTML, CSS,
+          Bootstrap, and Python. Interested in writing maintainable software, solving practical problems, and currently
+          expanding knowledge of Artificial Intelligence and Machine Learning.</p>
       </section>
 
       <section>
         <h2>Education</h2>
         <div class="eduhead"><span>Galala University</span><span>Suez, Egypt</span></div>
         <div class="sub">B.Sc. in Computer Science — Third-Year Student | Software Engineering Specialization</div>
-        <p><b>Relevant coursework:</b> Web Programming, Computer Networks, Computer Security, Object-Oriented Programming, Data Structures and Algorithms, Database Systems, Computer Architecture, Operating Systems, Software Engineering.</p>
+        <p><b>Relevant coursework:</b> Web Programming, Computer Networks, Computer Security, Object-Oriented
+          Programming, Data Structures and Algorithms, Database Systems, Computer Architecture, Operating Systems,
+          Software Engineering.</p>
       </section>
 
       <section class="skills">
@@ -717,46 +842,57 @@
         <p><b>Web:</b> Angular, HTML5, CSS3, Bootstrap, responsive UI, external API integration</p>
         <p><b>Software Foundations:</b> Object-Oriented Programming, Data Structures, debugging, problem-solving</p>
         <p><b>Tools:</b> Git, GitHub, Visual Studio Code</p>
-        <p><b>Additional:</b> Linux/Kali Linux fundamentals, cybersecurity fundamentals, ethical hacking basics, graphic design foundations</p>
-        <p><b>AI/ML:</b> Completed an introductory AI and Machine Learning course; continuing to build practical knowledge</p>
+        <p><b>Additional:</b> Linux/Kali Linux fundamentals, cybersecurity fundamentals, ethical hacking basics, graphic
+          design foundations</p>
+        <p><b>AI/ML:</b> Completed an introductory AI and Machine Learning course; continuing to build practical
+          knowledge</p>
       </section>
 
       <section>
         <h2>Selected Projects</h2>
         <div class="project">
-          <div class="pt"><a href="https://ahmedmohammed977.github.io/ShopSpot/" target="_blank">ShopSpot — E-Commerce Web Application</a></div>
+          <div class="pt"><a href="https://ahmedmohammed977.github.io/ShopSpot/" target="_blank">ShopSpot — E-Commerce
+              Web Application</a></div>
           <div class="tech">Angular · TypeScript · JavaScript · Bootstrap · HTML · CSS</div>
           <ul>
-            <li>Developed an e-commerce front end with product browsing, search/filtering, cart, and wishlist workflows.</li>
-            <li>Integrated product data from an external API and used client-side persistence for shopping features.</li>
+            <li>Developed an e-commerce front end with product browsing, search/filtering, cart, and wishlist workflows.
+            </li>
+            <li>Integrated product data from an external API and used client-side persistence for shopping features.
+            </li>
           </ul>
         </div>
         <div class="project">
-          <div class="pt"><a href="https://ahmedmohammed977.github.io/" target="_blank">Personal Portfolio Website</a></div>
+          <div class="pt"><a href="https://ahmedmohammed977.github.io/" target="_blank">Personal Portfolio Website</a>
+          </div>
           <div class="tech">Angular · TypeScript · HTML · CSS · Bootstrap</div>
           <ul>
-            <li>Created a portfolio to showcase projects, technical skills, and contact details in a responsive layout.</li>
+            <li>Created a portfolio to showcase projects, technical skills, and contact details in a responsive layout.
+            </li>
           </ul>
         </div>
         <div class="project">
           <div class="pt">Smart Attendance Management System</div>
           <div class="tech">Python · OOP · Data Structures</div>
           <ul>
-            <li>Built an academic application to manage student attendance records, look up records, and generate absence reports.</li>
+            <li>Built an academic application to manage student attendance records, look up records, and generate
+              absence reports.</li>
           </ul>
         </div>
         <div class="project">
           <div class="pt">Toolify — Multi-Utility Application</div>
           <div class="tech">Python · Tkinter</div>
           <ul>
-            <li>Developed a desktop utility app combining everyday tools such as a calculator, notes, and a simple game.</li>
+            <li>Developed a desktop utility app combining everyday tools such as a calculator, notes, and a simple game.
+            </li>
           </ul>
         </div>
         <div class="project">
-          <div class="pt"><a href="https://ahmedmohammed977.github.io/Dashboard/login.html" target="_blank">Analytics Management Dashboard</a></div>
+          <div class="pt"><a href="https://ahmedmohammed977.github.io/Dashboard/login.html" target="_blank">Analytics
+              Management Dashboard</a></div>
           <div class="tech">HTML · CSS · JavaScript</div>
           <ul>
-            <li>Built a responsive dashboard interface with task visualization, progress tracking, and mock authentication.</li>
+            <li>Built a responsive dashboard interface with task visualization, progress tracking, and mock
+              authentication.</li>
           </ul>
         </div>
       </section>
@@ -815,10 +951,10 @@
       if (!bounds) return;
       const x = e.clientX - bounds.left;
       const y = e.clientY - bounds.top;
-      
+
       const xCenter = bounds.width / 2;
       const yCenter = bounds.height / 2;
-      
+
       mouseX = (x - xCenter) / xCenter;
       mouseY = (y - yCenter) / yCenter;
     });
@@ -939,4 +1075,5 @@
     animateParticles();
   </script>
 </body>
+
 </html>
