@@ -1,0 +1,942 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ahmed Mohammed Ahmed | Software Engineering Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090e;
+      --card-bg: rgba(13, 17, 26, 0.75);
+      --card-border: rgba(0, 240, 255, 0.15);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --cyan: #00f0ff;
+      --purple: #a855f7;
+      --blue: #3b82f6;
+      --emerald: #10b981;
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-main);
+      font-size: 14.5px;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Interactive 3D Canvas Background */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ambient Glow Blobs */
+    .glow-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+      animation: floatOrb 16s ease-in-out infinite alternate;
+    }
+    .glow-orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #00f0ff, transparent); top: -100px; left: -100px; }
+    .glow-orb-2 { width: 600px; height: 600px; background: radial-gradient(circle, #a855f7, transparent); bottom: -150px; right: -150px; animation-duration: 22s; }
+    .glow-orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, #3b82f6, transparent); top: 40%; left: 60%; animation-duration: 18s; }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(80px, 60px) scale(1.15); }
+    }
+
+    /* Top Reading Progress Bar */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #00f0ff, #a855f7, #ec4899);
+      width: 0%;
+      z-index: 100;
+      transition: width 0.05s ease-out;
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+    }
+
+    /* Floating Navigation / Control HUD */
+    .hud-bar {
+      position: sticky;
+      top: 16px;
+      z-index: 50;
+      max-width: 1100px;
+      margin: 16px auto 24px;
+      padding: 12px 20px;
+      background: rgba(13, 17, 26, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 240, 255, 0.1);
+      animation: slideDown 0.6s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .hud-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 999px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: #34d399;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseDot 2s infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hud-title {
+      font-weight: 700;
+      font-size: 13.5px;
+      letter-spacing: 0.3px;
+      color: #fff;
+    }
+
+    .hud-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-hud {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #f1f5f9;
+      padding: 8px 16px;
+      font-size: 12.5px;
+      font-weight: 600;
+      font-family: var(--font-main);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-hud:hover {
+      background: rgba(0, 240, 255, 0.15);
+      border-color: rgba(0, 240, 255, 0.5);
+      color: #00f0ff;
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary-hud {
+      background: linear-gradient(135deg, #00f0ff, #3b82f6);
+      color: #050811;
+      border: none;
+      font-weight: 700;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+    }
+    .btn-primary-hud:hover {
+      background: linear-gradient(135deg, #38bdf8, #60a5fa);
+      color: #000;
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.7);
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    /* Main Container (Full Page Width & 3D Perspective) */
+    .resume-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+      position: relative;
+      z-index: 10;
+      perspective: 1200px;
+    }
+
+    /* 3D Glass Card */
+    .card-3d {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 40px 48px;
+      margin-bottom: 24px;
+      box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8),
+                  0 0 1px 1px rgba(255, 255, 255, 0.05);
+      transform-style: preserve-3d;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.3s ease,
+                  box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-3d::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.5), rgba(168, 85, 247, 0.5), transparent);
+      opacity: 0.6;
+    }
+
+    .card-3d:hover {
+      border-color: rgba(0, 240, 255, 0.3);
+      box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9),
+                  0 0 30px rgba(0, 240, 255, 0.15);
+    }
+
+    /* Resume Header */
+    header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 24px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #ffffff 40%, #00f0ff 80%, #a855f7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .role {
+      font-size: 14.5px;
+      color: #38bdf8;
+      font-weight: 600;
+      margin-bottom: 14px;
+      line-height: 1.5;
+      letter-spacing: 0.2px;
+      font-family: var(--font-mono);
+    }
+
+    .contact {
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      overflow-wrap: anywhere;
+    }
+    .contact a {
+      color: #e2e8f0;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(0, 240, 255, 0.4);
+      padding-bottom: 1px;
+      transition: all 0.2s;
+    }
+    .contact a:hover {
+      color: #00f0ff;
+      border-bottom-color: #00f0ff;
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    }
+
+    /* Section Headers */
+    section {
+      margin-top: 24px;
+      position: relative;
+    }
+
+    h2 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #00f0ff;
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    h2::before {
+      content: '//';
+      color: #a855f7;
+      font-weight: 800;
+    }
+
+    p {
+      margin-bottom: 10px;
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+
+    /* Education */
+    .eduhead {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+    }
+    .sub {
+      font-size: 13.5px;
+      color: #38bdf8;
+      font-style: italic;
+      margin: 4px 0 10px;
+    }
+
+    /* Skills Grid */
+    .skills p {
+      margin-bottom: 10px;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+    .skills p:hover {
+      background: rgba(0, 240, 255, 0.04);
+      border-color: rgba(0, 240, 255, 0.2);
+      transform: translateX(4px);
+    }
+    .skills b {
+      color: #00f0ff;
+      font-weight: 600;
+      margin-right: 4px;
+    }
+
+    /* Selected Projects */
+    .project {
+      margin-bottom: 16px;
+      padding: 16px 18px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 14px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .project:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(168, 85, 247, 0.35);
+      box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .pt {
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+    }
+    .pt a {
+      color: #fff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .pt a:hover {
+      color: #00f0ff;
+    }
+    .pt a::after {
+      content: '↗';
+      font-size: 12px;
+      color: #00f0ff;
+    }
+
+    .tech {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: #94a3b8;
+      margin: 4px 0 8px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 6px;
+    }
+    li {
+      margin-bottom: 6px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+    li::marker {
+      color: #00f0ff;
+    }
+
+    /* Certifications Grid */
+    section:last-of-type ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 10px;
+      list-style-type: none;
+      padding-left: 0;
+    }
+    section:last-of-type li {
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    section:last-of-type li::before {
+      content: '✦';
+      color: #a855f7;
+      font-size: 11px;
+    }
+    section:last-of-type li:hover {
+      border-color: rgba(168, 85, 247, 0.3);
+      background: rgba(168, 85, 247, 0.05);
+      transform: translateY(-1px);
+    }
+
+    /* Floating Quick Actions Dock */
+    .floating-dock {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 60;
+    }
+    .dock-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(13, 17, 26, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      color: #00f0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .dock-btn:hover {
+      transform: scale(1.1);
+      background: #00f0ff;
+      color: #000;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.7);
+    }
+
+    /* Mobile Adaptations */
+    @media (max-width: 768px) {
+      .hud-bar {
+        margin: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hud-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .card-3d {
+        padding: 24px 20px;
+        border-radius: 18px;
+      }
+      h1 { font-size: 26px; }
+      .eduhead { flex-direction: column; gap: 4px; }
+      section:last-of-type ul { grid-template-columns: 1fr; }
+    }
+
+    /* =========================================================
+       PRINT MODE (Exact Clean Standard A4 Layout Without 3D/Effects)
+       ========================================================= */
+    @page {
+      size: A4;
+      margin: 10mm 12mm;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #172033 !important;
+        font: 9pt/1.28 Arial, Helvetica, sans-serif !important;
+      }
+
+      #bg-canvas, .glow-orb, #scroll-progress, .hud-bar, .floating-dock {
+        display: none !important;
+      }
+
+      .resume-wrapper {
+        max-width: 850px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        perspective: none !important;
+      }
+
+      .card-3d {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        backdrop-filter: none !important;
+        transform: none !important;
+      }
+
+      .card-3d::before { display: none !important; }
+
+      header {
+        border-bottom: 2px solid #172033 !important;
+        padding-bottom: 8px !important;
+        margin-bottom: 8px !important;
+      }
+
+      h1 {
+        font-size: 21pt !important;
+        line-height: 1.1 !important;
+        margin: 0 0 4px !important;
+        background: none !important;
+        -webkit-text-fill-color: #172033 !important;
+        color: #172033 !important;
+      }
+
+      .role {
+        font-size: 9.5pt !important;
+        color: #175cd3 !important;
+        font-weight: bold !important;
+        margin-bottom: 5px !important;
+        font-family: inherit !important;
+      }
+
+      .contact {
+        font-size: 7.8pt !important;
+        line-height: 1.4 !important;
+        color: #526174 !important;
+      }
+      .contact a {
+        color: inherit !important;
+        text-decoration: none !important;
+        border: none !important;
+      }
+
+      section {
+        margin-top: 6px !important;
+      }
+
+      h2 {
+        font-size: 9pt !important;
+        letter-spacing: .7px !important;
+        text-transform: uppercase !important;
+        border-bottom: 1px solid #d8dee8 !important;
+        padding-bottom: 3px !important;
+        margin: 0 0 4px !important;
+        color: #172033 !important;
+        font-family: inherit !important;
+      }
+      h2::before { display: none !important; }
+
+      p {
+        margin: 0 0 2px !important;
+        color: #172033 !important;
+      }
+
+      .skills p {
+        margin-bottom: 2px !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        transform: none !important;
+      }
+      .skills b { color: #172033 !important; }
+
+      .project {
+        margin-bottom: 4px !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        transform: none !important;
+      }
+      .pt {
+        font-weight: bold !important;
+        font-size: 9pt !important;
+        color: #172033 !important;
+      }
+      .pt a { color: #172033 !important; }
+      .pt a::after { display: none !important; }
+
+      .tech {
+        font-size: 7.7pt !important;
+        font-style: italic !important;
+        color: #526174 !important;
+        margin: 1px 0 1px !important;
+        font-family: inherit !important;
+      }
+
+      ul {
+        padding: 0 !important;
+        margin: 2px 0 0 15px !important;
+      }
+      li {
+        margin: 0 0 1px !important;
+        color: #172033 !important;
+      }
+      li::marker { color: #172033 !important; }
+
+      .eduhead {
+        display: flex !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+        font-weight: bold !important;
+        font-size: 9pt !important;
+        color: #172033 !important;
+      }
+      .sub {
+        font-size: 8pt !important;
+        color: #526174 !important;
+        font-style: italic !important;
+        margin: 2px 0 !important;
+      }
+
+      section:last-of-type ul {
+        display: block !important;
+        list-style-type: disc !important;
+        padding-left: 15px !important;
+      }
+      section:last-of-type li {
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        display: list-item !important;
+      }
+      section:last-of-type li::before { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Interactive 3D Canvas Background -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="glow-orb glow-orb-1"></div>
+  <div class="glow-orb glow-orb-2"></div>
+  <div class="glow-orb glow-orb-3"></div>
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress"></div>
+
+  <!-- Floating HUD Navigation -->
+  <div class="hud-bar">
+    <div class="hud-left">
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span>VERIFIED RESUME</span>
+      </div>
+      <span class="hud-title">Ahmed Mohammed Ahmed — Official Curriculum Vitae</span>
+    </div>
+    <div class="hud-actions">
+      <a href="/" class="btn-hud" title="Return to Main Portfolio">
+        <span>← Portfolio</span>
+      </a>
+      <button class="btn-hud btn-primary-hud" onclick="window.print()" title="Print or save standard A4 PDF">
+        <span>🖨️ Print / Save PDF</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main 3D Resume Workspace (Takes full screen width) -->
+  <div class="resume-wrapper">
+    <main class="card-3d" id="resume-card">
+      <header>
+        <h1>Ahmed Mohammed Ahmed</h1>
+        <div class="role">Computer Science Student | Software Engineering | Front-End & Back-End Development | Aspiring Full-Stack Developer</div>
+        <div class="contact">
+          Suez, Egypt &nbsp;•&nbsp; +20 1121742874 &nbsp;•&nbsp; <a href="mailto:ahmedmohammed09988771@gmail.com">ahmedmohammed09988771@gmail.com</a><br>
+          GitHub: <a href="https://github.com/ahmedmohammed977" target="_blank">github.com/ahmedmohammed977</a> &nbsp;•&nbsp; Portfolio: <a href="https://ahmedmohammed977.github.io/" target="_blank">ahmedmohammed977.github.io</a>
+        </div>
+      </header>
+
+      <section>
+        <h2>Professional Summary</h2>
+        <p>Third-year Computer Science student at Galala University specializing in Software Engineering. Built personal and academic projects in web and desktop development using Angular, TypeScript, JavaScript, HTML, CSS, Bootstrap, and Python. Interested in writing maintainable software, solving practical problems, and currently expanding knowledge of Artificial Intelligence and Machine Learning.</p>
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <div class="eduhead"><span>Galala University</span><span>Suez, Egypt</span></div>
+        <div class="sub">B.Sc. in Computer Science — Third-Year Student | Software Engineering Specialization</div>
+        <p><b>Relevant coursework:</b> Web Programming, Computer Networks, Computer Security, Object-Oriented Programming, Data Structures and Algorithms, Database Systems, Computer Architecture, Operating Systems, Software Engineering.</p>
+      </section>
+
+      <section class="skills">
+        <h2>Technical Skills</h2>
+        <p><b>Languages:</b> Python, C++, JavaScript, TypeScript, SQL (basic)</p>
+        <p><b>Web:</b> Angular, HTML5, CSS3, Bootstrap, responsive UI, external API integration</p>
+        <p><b>Software Foundations:</b> Object-Oriented Programming, Data Structures, debugging, problem-solving</p>
+        <p><b>Tools:</b> Git, GitHub, Visual Studio Code</p>
+        <p><b>Additional:</b> Linux/Kali Linux fundamentals, cybersecurity fundamentals, ethical hacking basics, graphic design foundations</p>
+        <p><b>AI/ML:</b> Completed an introductory AI and Machine Learning course; continuing to build practical knowledge</p>
+      </section>
+
+      <section>
+        <h2>Selected Projects</h2>
+        <div class="project">
+          <div class="pt"><a href="https://ahmedmohammed977.github.io/ShopSpot/" target="_blank">ShopSpot — E-Commerce Web Application</a></div>
+          <div class="tech">Angular · TypeScript · JavaScript · Bootstrap · HTML · CSS</div>
+          <ul>
+            <li>Developed an e-commerce front end with product browsing, search/filtering, cart, and wishlist workflows.</li>
+            <li>Integrated product data from an external API and used client-side persistence for shopping features.</li>
+          </ul>
+        </div>
+        <div class="project">
+          <div class="pt"><a href="https://ahmedmohammed977.github.io/" target="_blank">Personal Portfolio Website</a></div>
+          <div class="tech">Angular · TypeScript · HTML · CSS · Bootstrap</div>
+          <ul>
+            <li>Created a portfolio to showcase projects, technical skills, and contact details in a responsive layout.</li>
+          </ul>
+        </div>
+        <div class="project">
+          <div class="pt">Smart Attendance Management System</div>
+          <div class="tech">Python · OOP · Data Structures</div>
+          <ul>
+            <li>Built an academic application to manage student attendance records, look up records, and generate absence reports.</li>
+          </ul>
+        </div>
+        <div class="project">
+          <div class="pt">Toolify — Multi-Utility Application</div>
+          <div class="tech">Python · Tkinter</div>
+          <ul>
+            <li>Developed a desktop utility app combining everyday tools such as a calculator, notes, and a simple game.</li>
+          </ul>
+        </div>
+        <div class="project">
+          <div class="pt"><a href="https://ahmedmohammed977.github.io/Dashboard/login.html" target="_blank">Analytics Management Dashboard</a></div>
+          <div class="tech">HTML · CSS · JavaScript</div>
+          <ul>
+            <li>Built a responsive dashboard interface with task visualization, progress tracking, and mock authentication.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Certifications & Courses</h2>
+        <ul>
+          <li>Cybersecurity Essentials — Cisco Networking Academy (2024)</li>
+          <li>Ethical Hacking Fundamentals — Cybrary (2024)</li>
+          <li>Object-Oriented Programming — freeCodeCamp (2025)</li>
+          <li>JavaScript Algorithms and Data Structures — freeCodeCamp (2025)</li>
+          <li>Python Basics — SoloLearn (2023)</li>
+          <li>Front End Development — freeCodeCamp (2024)</li>
+          <li>Full Stack Development — freeCodeCamp (2026)</li>
+          <li>Artificial Intelligence and Machine Learning — freeCodeCamp (year not specified)</li>
+          <li>Graphic Design Foundations — CalArts / Coursera (2022)</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <!-- Quick Floating Action Dock -->
+  <div class="floating-dock">
+    <button class="dock-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to Top">
+      ↑
+    </button>
+    <button class="dock-btn" onclick="window.print()" title="Print / Download PDF">
+      🖨
+    </button>
+  </div>
+
+  <!-- Interactive 3D Physics & Animations Script -->
+  <script>
+    // 1. Reading Scroll Progress
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scroll-progress').style.width = scrolled + '%';
+    });
+
+    // 2. Interactive 3D Card Tilt with Smooth Damping
+    const card = document.getElementById('resume-card');
+    let bounds;
+
+    function refreshBounds() {
+      if (card) bounds = card.getBoundingClientRect();
+    }
+    window.addEventListener('resize', refreshBounds);
+    refreshBounds();
+
+    let mouseX = 0, mouseY = 0;
+    let currentX = 0, currentY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      if (!bounds) return;
+      const x = e.clientX - bounds.left;
+      const y = e.clientY - bounds.top;
+      
+      const xCenter = bounds.width / 2;
+      const yCenter = bounds.height / 2;
+      
+      mouseX = (x - xCenter) / xCenter;
+      mouseY = (y - yCenter) / yCenter;
+    });
+
+    function updateTilt() {
+      // Gentle damping calculation
+      currentX += (mouseX - currentX) * 0.05;
+      currentY += (mouseY - currentY) * 0.05;
+
+      // Subtle, classy 3D angle (within 4 degrees)
+      const rotateX = -currentY * 3.5;
+      const rotateY = currentX * 3.5;
+
+      if (card && window.innerWidth > 900) {
+        card.style.transform = `rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+      }
+      requestAnimationFrame(updateTilt);
+    }
+    requestAnimationFrame(updateTilt);
+
+    // 3. Interactive Constellation 3D Canvas
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      initParticles();
+    }
+    window.addEventListener('resize', resizeCanvas);
+
+    function initParticles() {
+      particles = [];
+      const count = Math.floor((width * height) / 18000);
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.6,
+          vy: (Math.random() - 0.5) * 0.6,
+          radius: Math.random() * 1.6 + 0.6,
+          color: Math.random() > 0.4 ? 'rgba(0, 240, 255,' : 'rgba(168, 85, 247,'
+        });
+      }
+    }
+
+    let cursorPoint = { x: -1000, y: -1000 };
+    window.addEventListener('mousemove', (e) => {
+      cursorPoint.x = e.clientX;
+      cursorPoint.y = e.clientY;
+    });
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw subtle grid
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.015)';
+      ctx.lineWidth = 1;
+      const gridSize = 80;
+      for (let x = 0; x < width; x += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+      }
+      for (let y = 0; y < height; y += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
+      }
+
+      // Update & Draw particles
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        // Interaction with mouse
+        const dx = cursorPoint.x - p.x;
+        const dy = cursorPoint.y - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          p.x -= (dx / dist) * 1.5;
+          p.y -= (dy / dist) * 1.5;
+        }
+
+        ctx.fillStyle = p.color + '0.7)';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Connect nearby particles
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dist2 = Math.hypot(p.x - p2.x, p.y - p2.y);
+          if (dist2 < 110) {
+            ctx.strokeStyle = `rgba(0, 240, 255, ${0.18 * (1 - dist2 / 110)})`;
+            ctx.lineWidth = 0.6;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animateParticles);
+    }
+
+    resizeCanvas();
+    animateParticles();
+  </script>
+</body>
+</html>
