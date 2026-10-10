@@ -22,16 +22,16 @@ export const Logo: React.FC<LogoProps> = ({ lang = "en", onClick, className = ""
   return (
     <div
       onClick={handleClick}
-      className={`group flex items-center gap-3 cursor-pointer select-none ${className}`}
+      className={`group flex items-center gap-2 sm:gap-3 cursor-pointer select-none ${className}`}
       title="Ahmed Tash Tash - Full Stack Architect"
     >
       {/* 3D Holographic Crest */}
-      <div className="relative w-10 h-10 flex items-center justify-center">
+      <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shrink-0">
         {/* Outer Pulsing Glow */}
         <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-cyan-500/30 via-purple-600/30 to-rose-500/30 blur-md group-hover:blur-lg transition-all duration-300 opacity-60 group-hover:opacity-100" />
 
         {/* Faceted Shield Body */}
-        <div className="relative w-10 h-10 rounded-xl bg-[#090a14] border border-cyan-500/40 group-hover:border-cyan-400 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-105 overflow-hidden">
+        <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#090a14] border border-cyan-500/40 group-hover:border-cyan-400 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-105 overflow-hidden">
           {/* Subtle animated scanline */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-400/10 to-transparent -translate-y-full group-hover:translate-y-full transition-transform duration-700 ease-out" />
 
@@ -40,7 +40,7 @@ export const Logo: React.FC<LogoProps> = ({ lang = "en", onClick, className = ""
             viewBox="0 0 36 36"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-7 h-7 transform group-hover:rotate-6 transition-transform duration-300"
+            className="w-5 h-5 sm:w-7 sm:h-7 transform group-hover:rotate-6 transition-transform duration-300"
           >
             <defs>
               <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -68,16 +68,16 @@ export const Logo: React.FC<LogoProps> = ({ lang = "en", onClick, className = ""
       </div>
 
       {/* Brand Typography */}
-      <div className="flex flex-col">
-        <div className="flex items-center gap-2 font-bold tracking-tight text-white group-hover:text-cyan-300 transition-colors">
-          <span className="text-sm sm:text-base tracking-wide font-extrabold font-mono text-white">
+      <div className="flex flex-col min-w-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 font-bold tracking-tight text-white group-hover:text-cyan-300 transition-colors">
+          <span className="text-xs sm:text-base tracking-wide font-extrabold font-mono text-white truncate">
             {lang === "ar" ? "أحمد محمد" : "Ahmed Mohammed"}
           </span>
-          <span className="text-[11px] px-1.5 py-0.5 rounded-md bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 font-mono font-medium">
+          <span className="text-[10px] sm:text-[11px] px-1 sm:px-1.5 py-0.5 rounded-md bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 font-mono font-medium shrink-0">
             {lang === "ar" ? "طشطش" : "TashTash"}
           </span>
         </div>
-        <span className="text-[10px] tracking-widest text-zinc-400 uppercase font-mono">
+        <span className="text-[9px] sm:text-[10px] tracking-wider sm:tracking-widest text-zinc-400 uppercase font-mono hidden xs:block truncate">
           {lang === "ar" ? "مهندس برمجيات • علوم حاسب" : "Software Engineer • CS"}
         </span>
       </div>

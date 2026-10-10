@@ -19,7 +19,8 @@ const CyberBackground = dynamic(
 );
 
 export default function Home() {
-  const [lang, setLang] = useState<Language>("ar"); // Default to Arabic as primary, switchable to English instantly
+  // Initial load defaults strictly to English on any link and on local
+  const [lang, setLang] = useState<Language>("en");
 
   useEffect(() => {
     // Force browser to land at top on refresh or initial load
@@ -28,18 +29,34 @@ export default function Home() {
         window.history.scrollRestoration = "manual";
       }
       window.scrollTo(0, 0);
-    }
 
-    const savedLang = localStorage.getItem("tash_portfolio_lang") as Language | null;
-    if (savedLang === "en" || savedLang === "ar") {
-      setLang(savedLang);
+      // 1. Explicit query parameter check (?lang=ar or ?lang=en)
+      const params = new URLSearchParams(window.location.search);
+      const urlLang = params.get("lang") as Language | null;
+      if (urlLang === "ar" || urlLang === "en") {
+        setLang(urlLang);
+        sessionStorage.setItem("tash_portfolio_session_lang", urlLang);
+        return;
+      }
+
+      // 2. Tab session preference if toggled during this browsing session
+      const sessionLang = sessionStorage.getItem("tash_portfolio_session_lang") as Language | null;
+      if (sessionLang === "ar" || sessionLang === "en") {
+        setLang(sessionLang);
+      } else {
+        // First visit / fresh link / localhost: Always start with English
+        setLang("en");
+      }
     }
   }, []);
 
   const handleToggleLang = () => {
     setLang((prev) => {
       const next = prev === "ar" ? "en" : "ar";
-      localStorage.setItem("tash_portfolio_lang", next);
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem("tash_portfolio_session_lang", next);
+        localStorage.setItem("tash_portfolio_lang", next);
+      }
       return next;
     });
   };

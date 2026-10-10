@@ -121,12 +121,14 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang }) => {
       case "skills":
         res = (
           <div className="space-y-1.5 text-xs text-zinc-300">
-            <p className="text-purple-400 font-bold">⚡ Verified Technical Mastery & Proficiency:</p>
+            <p className="text-purple-400 font-bold">
+              {lang === "ar" ? "⚡ الكفاءات والخبرات البرمجية المعتمدة:" : "⚡ Verified Technical Mastery & Proficiency:"}
+            </p>
             <p>• <span className="text-emerald-400 font-bold">Python: 100%</span> | <span className="text-emerald-400 font-bold">MySQL Database: 100%</span></p>
             <p>• <span className="text-cyan-400 font-bold">JavaScript: 95%</span> | <span className="text-cyan-400 font-bold">TypeScript: 95%</span></p>
-            <p>• <span className="text-amber-400 font-bold">Core Engineering: 90%</span> (Java, C++, C#, Angular, Django, REST APIs, OOP, DSA, Git & GitHub)</p>
-            <p>• <span className="text-pink-400 font-bold">Specialized Tools:</span> VS Code (95%), Kali Linux (90%), Canva (95%), PowerPoint (95%), Word (95%), Excel (95%)</p>
-            <p>• <span className="text-indigo-400 font-bold">Design Domain:</span> Professional Graphic Designer (UI/UX, Visual Branding, Motion & Social Identity)</p>
+            <p>• <span className="text-amber-400 font-bold">{lang === "ar" ? "الهندسة الأساسية: 90%" : "Core Engineering: 90%"}</span> (Java, C++, C#, Angular, Django, REST APIs, OOP, DSA, Git & GitHub)</p>
+            <p>• <span className="text-pink-400 font-bold">{lang === "ar" ? "الأدوات المتخصصة:" : "Specialized Tools:"}</span> VS Code (95%), Kali Linux (90%), Canva (95%), PowerPoint (95%), Word (95%), Excel (95%)</p>
+            <p>• <span className="text-indigo-400 font-bold">{lang === "ar" ? "مجال التصميم:" : "Design Domain:"}</span> {lang === "ar" ? "مصمم جرافيك محترف (UI/UX، الهوية البصرية، الموشن ميديا)" : "Professional Graphic Designer (UI/UX, Visual Branding, Motion & Social Identity)"}</p>
           </div>
         );
         break;
@@ -314,9 +316,9 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang }) => {
           ))}
 
           {/* Current Input Line */}
-          <div className="flex items-center gap-2 text-xs sm:text-sm text-cyan-400 pt-1">
-            <span className="text-purple-400 animate-pulse">❯</span>
-            <span className="text-zinc-500">tash$</span>
+          <div className="flex items-center gap-2 text-xs sm:text-sm text-cyan-400 pt-1 min-w-0">
+            <span className="text-purple-400 animate-pulse shrink-0">❯</span>
+            <span className="text-zinc-500 shrink-0">tash$</span>
             <input
               ref={inputRef}
               type="text"
@@ -324,13 +326,14 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang }) => {
               onChange={(e) => setInputVal(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder={lang === "ar" ? "اكتب أمراً هنا... (جرب: help)" : "Type a command... (try: help)"}
-              className="flex-1 bg-transparent text-white focus:outline-none font-mono text-xs sm:text-sm caret-cyan-400"
+              className="flex-1 min-w-0 bg-transparent text-white focus:outline-none font-mono text-xs sm:text-sm caret-cyan-400"
               autoComplete="off"
               spellCheck="false"
             />
             <button
               onClick={() => executeCommand(inputVal)}
-              className="p-1 text-zinc-500 hover:text-cyan-400 transition-colors"
+              className="p-1 text-zinc-500 hover:text-cyan-400 transition-colors shrink-0"
+              aria-label="Execute command"
             >
               <CornerDownLeft className="w-4 h-4" />
             </button>

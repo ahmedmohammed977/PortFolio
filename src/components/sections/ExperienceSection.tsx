@@ -74,19 +74,19 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
               {lang === "ar" ? "ركائز الخبرة التخصصية" : "Specialized Experience Pillars"}
             </h3>
           </div>
-          <span className="text-xs font-mono text-zinc-400 px-2.5 py-1 rounded-full bg-white/5 border border-white/10">
+          <span className="text-xs font-mono text-zinc-400 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 hidden xs:inline-block">
             {lang === "ar" ? "توزيع سنوات الخبرة العملية" : "Hands-on Years Breakdown"}
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {experiencePillars.map((pillar) => {
             const isSelected = activePillar === pillar.id;
             return (
               <div
                 key={pillar.id}
                 onClick={() => setActivePillar(pillar.id)}
-                className={`relative rounded-3xl p-6 transition-all duration-300 cursor-pointer overflow-hidden border ${
+                className={`relative rounded-2xl sm:rounded-3xl p-4.5 sm:p-6 transition-all duration-300 cursor-pointer overflow-hidden border ${
                   isSelected
                     ? "bg-[#0b0e22]/90 border-cyan-400/60 shadow-[0_0_25px_rgba(0,240,255,0.2)] scale-[1.01]"
                     : "glass-panel bg-[#070914]/60 border-white/10 hover:border-cyan-500/30 hover:bg-[#090c1e]/70"
@@ -97,13 +97,13 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
                   className={`absolute -top-12 -right-12 w-32 h-32 rounded-full blur-3xl pointer-events-none opacity-20 bg-gradient-to-br ${pillar.gradient}`}
                 />
 
-                <div className="relative space-y-4">
+                <div className="relative space-y-3.5 sm:space-y-4">
                   {/* Top Bar: Icon + Years Badge */}
                   <div className="flex items-center justify-between gap-2">
-                    <div className="p-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+                    <div className="p-2 sm:p-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
                       {getPillarIcon(pillar.id)}
                     </div>
-                    <span className="px-3 py-1 rounded-full text-xs font-mono font-bold text-cyan-300 bg-cyan-950/60 border border-cyan-500/40 shadow-[0_0_10px_rgba(0,240,255,0.2)]">
+                    <span className="px-2.5 sm:px-3 py-1 rounded-full text-xs font-mono font-bold text-cyan-300 bg-cyan-950/60 border border-cyan-500/40 shadow-[0_0_10px_rgba(0,240,255,0.2)]">
                       {pillar.years[lang]}
                     </span>
                   </div>
@@ -119,7 +119,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
                   </div>
 
                   {/* Description */}
-                  <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed min-h-[48px]">
+                  <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed min-h-[40px] sm:min-h-[48px]">
                     {pillar.description[lang]}
                   </p>
 
@@ -138,7 +138,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
                     {pillar.skills.slice(0, 4).map((skill) => (
                       <span
                         key={skill}
-                        className="px-2 py-0.5 rounded-md bg-white/5 text-[10.5px] font-mono text-zinc-300 border border-white/5"
+                        className="px-2 py-0.5 rounded-md bg-white/5 text-[10px] font-mono text-zinc-400 border border-white/5"
                       >
                         {skill}
                       </span>
@@ -160,16 +160,16 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
       </div>
 
       {/* Timeline List */}
-      <div className="relative border-s border-cyan-500/25 ms-4 sm:ms-8 space-y-10">
+      <div className="relative border-s border-cyan-500/25 ms-2 xs:ms-4 sm:ms-8 space-y-8 sm:space-y-10">
         {experience.map((item, idx) => (
-          <div key={idx} className="relative ps-6 sm:ps-10 group">
+          <div key={idx} className="relative ps-4 xs:ps-6 sm:ps-10 group">
             {/* Glowing Timeline Marker */}
-            <span className="absolute -start-[17px] top-2 flex h-8 w-8 items-center justify-center rounded-full bg-[#070914] border-2 border-cyan-400 group-hover:border-cyan-300 shadow-[0_0_18px_rgba(0,240,255,0.45)] transition-all">
-              <span className="h-2.5 w-2.5 rounded-full bg-cyan-400 group-hover:bg-cyan-200" />
+            <span className="absolute -start-[15px] xs:-start-[17px] top-2 flex h-7 w-7 xs:h-8 xs:w-8 items-center justify-center rounded-full bg-[#070914] border-2 border-cyan-400 group-hover:border-cyan-300 shadow-[0_0_18px_rgba(0,240,255,0.45)] transition-all">
+              <span className="h-2 w-2 xs:h-2.5 xs:w-2.5 rounded-full bg-cyan-400 group-hover:bg-cyan-200" />
             </span>
 
             {/* Timeline Card */}
-            <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 hover:border-cyan-500/40 transition-all duration-300 space-y-4 bg-[#070914]/80">
+            <div className="glass-panel p-4 xs:p-5 sm:p-8 rounded-2xl sm:rounded-3xl border border-white/10 hover:border-cyan-500/40 transition-all duration-300 space-y-4 bg-[#070914]/80">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <h4 className="text-lg sm:text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">

@@ -63,8 +63,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
       </div>
 
       {/* 2. Main Title & Identity */}
-      <div className="max-w-4xl mx-auto space-y-4">
-        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-[1.08] text-white">
+      <div className="max-w-4xl mx-auto space-y-4 px-2">
+        <h1 className="text-3.5xl xs:text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-[1.12] text-white break-words">
           <span className="gradient-text-cyan-purple font-mono drop-shadow-[0_0_45px_rgba(0,240,255,0.45)]">
             {personal.fullName[lang]}
           </span>
@@ -77,35 +77,35 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
           </span>
         </div>
 
-        <p className="text-lg sm:text-2xl font-semibold text-zinc-200 max-w-2xl mx-auto flex items-center justify-center gap-2 pt-1">
+        <p className="text-base sm:text-2xl font-semibold text-zinc-200 max-w-2xl mx-auto flex items-center justify-center gap-2 pt-1 flex-wrap">
           <Cpu className="w-5 h-5 text-cyan-400 inline shrink-0" />
           <span>{personal.title[lang]}</span>
         </p>
 
-        <p className="text-sm sm:text-base text-zinc-400 max-w-2xl mx-auto leading-relaxed pt-2">
+        <p className="text-xs sm:text-base text-zinc-400 max-w-2xl mx-auto leading-relaxed pt-2">
           {personal.bio[lang]}
         </p>
       </div>
 
       {/* 3. Action CTAs */}
-      <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-8 max-w-xl mx-auto">
+      <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 mt-8 max-w-xl mx-auto px-2">
         {/* Explore Projects */}
         <button
           onClick={() => scrollTo("projects")}
-          className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-purple-600 text-black font-bold text-sm tracking-wide shadow-neon-cyan hover:shadow-cyan-400/40 hover:scale-[1.02] active:scale-95 transition-all duration-200 flex items-center gap-2"
+          className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-purple-600 text-black font-bold text-xs sm:text-sm tracking-wide shadow-neon-cyan hover:shadow-cyan-400/40 hover:scale-[1.02] active:scale-95 transition-all duration-200 flex items-center gap-2"
         >
-          <Sparkles className="w-4 h-4" />
+          <Sparkles className="w-4 h-4 shrink-0" />
           <span>{lang === "ar" ? "استكشف المشاريع" : "Flagship Projects"}</span>
         </button>
 
         {/* Copy Email Button with feedback */}
         <button
           onClick={handleCopyEmail}
-          className="px-5 py-3.5 rounded-xl glass-panel glass-panel-hover border border-white/10 text-white font-medium text-sm flex items-center gap-2 active:scale-95 transition-all"
+          className="px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl glass-panel glass-panel-hover border border-white/10 text-white font-medium text-xs sm:text-sm flex items-center gap-2 active:scale-95 transition-all max-w-full"
           title={lang === "ar" ? "نسخ البريد الإلكتروني" : "Copy email address"}
         >
-          {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-cyan-400" />}
-          <span className="font-mono text-xs sm:text-sm">
+          {copied ? <Check className="w-4 h-4 text-emerald-400 shrink-0" /> : <Copy className="w-4 h-4 text-cyan-400 shrink-0" />}
+          <span className="font-mono text-xs sm:text-sm truncate max-w-[190px] xs:max-w-none">
             {copied ? (lang === "ar" ? "تم نسخ الإيميل!" : "Copied!") : personal.email}
           </span>
         </button>

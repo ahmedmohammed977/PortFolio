@@ -59,21 +59,21 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang }) => {
       </div>
 
       {/* Domain Navigation Tabs */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 mb-8 sm:mb-10">
         {skillCategories.map((cat, idx) => (
           <button
             key={idx}
             onClick={() => handleTabChange(idx)}
-            className={`p-4 rounded-2xl border transition-all duration-300 flex items-center gap-3 text-start ${activeTab === idx
+            className={`p-3.5 sm:p-4 rounded-2xl border transition-all duration-300 flex items-center gap-3 text-start ${activeTab === idx
                 ? "glass-panel bg-cyan-950/20 border-cyan-400/50 shadow-neon-cyan/30 text-white"
                 : "glass-panel border-white/5 text-zinc-400 hover:text-white hover:border-white/20"
               }`}
           >
-            <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 shrink-0">
+            <div className="p-2 sm:p-2.5 rounded-xl bg-white/5 border border-white/10 shrink-0">
               {getIcon(cat.icon)}
             </div>
-            <div>
-              <h3 className="text-xs sm:text-sm font-bold">{cat.title[lang]}</h3>
+            <div className="min-w-0 flex-1">
+              <h3 className="text-xs sm:text-sm font-bold truncate">{cat.title[lang]}</h3>
               <span className="text-[10px] font-mono text-zinc-500">
                 {cat.skills.length} {lang === "ar" ? "مهارات" : "technologies"}
               </span>
@@ -83,7 +83,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang }) => {
       </div>
 
       {/* Active Skills Panel */}
-      <div className="glass-panel p-6 sm:p-10 rounded-3xl border border-white/10 shadow-2xl relative overflow-hidden">
+      <div className="glass-panel p-4 sm:p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
