@@ -47,28 +47,45 @@ body {
 
 /* Glassmorphism utility classes */
 .glass-panel {
-  background: rgba(13, 14, 26, 0.65);
+  background: rgba(13, 14, 26, 0.72);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-panel-hover {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
 }
 
 .glass-panel-hover:hover {
-  background: rgba(20, 22, 38, 0.85);
+  background: rgba(20, 22, 38, 0.88);
   border-color: rgba(0, 240, 255, 0.3);
   box-shadow: 0 10px 40px -10px rgba(0, 240, 255, 0.2);
   transform: translateY(-4px);
 }
 
 .glass-pill {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+/* Mobile & Low-Power Performance Boost: Disable heavy blur layers on mobile */
+@media (max-width: 768px) {
+  .glass-panel {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(11, 13, 23, 0.94) !important;
+  }
+  .glass-pill {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(18, 21, 37, 0.92) !important;
+  }
+}
+
 
 /* Gradient Text Shimmer */
 .gradient-text-cyan-purple {

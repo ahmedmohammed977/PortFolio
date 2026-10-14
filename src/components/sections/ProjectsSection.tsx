@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Language, portfolioData, Project } from "@/data/portfolioData";
 import { playCyberClick } from "@/lib/sound";
-import { ExternalLink, Github, Sparkles, TrendingUp, Layers, Eye, X, Globe, Maximize2 } from "lucide-react";
+import { ExternalLink, Github, TrendingUp, Layers, Eye, X, Globe, Maximize2 } from "lucide-react";
 import Image from "next/image";
 
 interface ProjectsSectionProps {
@@ -32,7 +32,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang }) => {
       {/* Section Header */}
       <div className="text-center space-y-3 mb-12">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill border border-cyan-500/20 text-xs font-mono text-cyan-400">
-          <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+          <Layers className="w-3.5 h-3.5 text-cyan-400" />
           <span>{lang === "ar" ? "أعمال معتمدة واستثنائية" : "Engineered for Scale"}</span>
         </div>
         <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">

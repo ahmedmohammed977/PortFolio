@@ -12,7 +12,6 @@ import {
   Linkedin,
   Github,
   ShieldAlert,
-  Sparkles,
   Phone,
   ExternalLink,
 } from "lucide-react";
@@ -260,7 +259,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang }) => {
         <div className="md:col-span-2 space-y-6">
           <div className="glass-panel p-6 sm:p-7 rounded-3xl border border-white/10 space-y-6">
             <h3 className="text-xl font-bold text-white flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-cyan-400" />
+              <MessageSquare className="w-5 h-5 text-cyan-400" />
               <span>{lang === "ar" ? "بيانات التواصل الرسمية" : "Direct Channels"}</span>
             </h3>
 

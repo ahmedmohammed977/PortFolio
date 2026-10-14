@@ -12,7 +12,6 @@ import {
   Server,
   Database,
   ShieldCheck,
-  Sparkles,
   Award,
   ChevronRight,
   TrendingUp,
@@ -79,66 +78,66 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6">
           {experiencePillars.map((pillar) => {
             const isSelected = activePillar === pillar.id;
             return (
               <div
                 key={pillar.id}
                 onClick={() => setActivePillar(pillar.id)}
-                className={`relative rounded-2xl sm:rounded-3xl p-4.5 sm:p-6 transition-all duration-300 cursor-pointer overflow-hidden border ${
+                className={`relative rounded-3xl p-6 sm:p-7 transition-all duration-300 cursor-pointer overflow-hidden border ${
                   isSelected
-                    ? "bg-[#0b0e22]/90 border-cyan-400/60 shadow-[0_0_25px_rgba(0,240,255,0.2)] scale-[1.01]"
-                    : "glass-panel bg-[#070914]/60 border-white/10 hover:border-cyan-500/30 hover:bg-[#090c1e]/70"
+                    ? "bg-[#0b0e26]/95 border-cyan-400/70 shadow-[0_8px_32px_rgba(0,240,255,0.25)] scale-[1.01]"
+                    : "glass-panel bg-[#070918]/70 border-white/10 hover:border-cyan-500/40 hover:bg-[#0a0d24]/80"
                 }`}
               >
                 {/* Background Glow */}
                 <div
-                  className={`absolute -top-12 -right-12 w-32 h-32 rounded-full blur-3xl pointer-events-none opacity-20 bg-gradient-to-br ${pillar.gradient}`}
+                  className={`absolute -top-12 -right-12 w-40 h-40 rounded-full blur-3xl pointer-events-none opacity-25 bg-gradient-to-br ${pillar.gradient}`}
                 />
 
-                <div className="relative space-y-3.5 sm:space-y-4">
+                <div className="relative space-y-4 sm:space-y-5">
                   {/* Top Bar: Icon + Years Badge */}
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="p-2 sm:p-2.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="p-3 sm:p-3.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md shadow-inner">
                       {getPillarIcon(pillar.id)}
                     </div>
-                    <span className="px-2.5 sm:px-3 py-1 rounded-full text-xs font-mono font-bold text-cyan-300 bg-cyan-950/60 border border-cyan-500/40 shadow-[0_0_10px_rgba(0,240,255,0.2)]">
+                    <span className="px-3.5 py-1.5 rounded-full text-xs font-mono font-bold text-cyan-300 bg-cyan-950/80 border border-cyan-500/50 shadow-[0_0_12px_rgba(0,240,255,0.25)]">
                       {pillar.years[lang]}
                     </span>
                   </div>
 
                   {/* Title & Category */}
-                  <div>
-                    <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
+                  <div className="space-y-1">
+                    <h4 className="text-lg sm:text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
                       {pillar.title[lang]}
                     </h4>
-                    <span className="text-xs font-mono text-purple-400">
+                    <span className="text-xs font-mono text-purple-400 block font-semibold">
                       {pillar.category[lang]}
                     </span>
                   </div>
 
                   {/* Description */}
-                  <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed min-h-[40px] sm:min-h-[48px]">
+                  <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed min-h-[44px]">
                     {pillar.description[lang]}
                   </p>
 
                   {/* Highlights Bullet Points */}
-                  <div className="space-y-1.5 pt-2 border-t border-white/5">
+                  <div className="space-y-2.5 pt-3 border-t border-white/10">
                     {pillar.highlights[lang].slice(0, 2).map((item, hIdx) => (
-                      <div key={hIdx} className="flex items-start gap-2 text-xs text-zinc-400">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                        <span className="line-clamp-2">{item}</span>
+                      <div key={hIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-300">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                        <span className="leading-snug">{item}</span>
                       </div>
                     ))}
                   </div>
 
                   {/* Skills Pills */}
-                  <div className="flex flex-wrap gap-1.5 pt-2">
+                  <div className="flex flex-wrap gap-2 pt-3 border-t border-white/5">
                     {pillar.skills.slice(0, 4).map((skill) => (
                       <span
                         key={skill}
-                        className="px-2 py-0.5 rounded-md bg-white/5 text-[10px] font-mono text-zinc-400 border border-white/5"
+                        className="px-2.5 py-1 rounded-lg bg-white/5 text-[11px] font-mono text-zinc-300 border border-white/10"
                       >
                         {skill}
                       </span>
@@ -192,7 +191,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
               {/* Achievements */}
               <div className="space-y-2 pt-2">
                 <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                  <TrendingUp className="w-3.5 h-3.5 text-cyan-400" />
                   {lang === "ar" ? "أبرز الإنجازات والنتائج المحققة:" : "Key Impacts & Deliverables:"}
                 </span>
                 <ul className="space-y-2">

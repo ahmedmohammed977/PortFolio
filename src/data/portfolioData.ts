@@ -64,8 +64,8 @@ export const portfolioData = {
       ar: "مصر • متاح للعمل محلياً وعالمياً",
     },
     bio: {
-      en: "3rd-Year Computer Science undergraduate, Full-Stack Software Engineer & Graphic Designer building mission-critical architectures and visually stunning digital products to Google & Microsoft standards. Master of algorithmic performance, clean SOLID code, secure system design, and high-impact visual aesthetics.",
-      ar: "طالب بالفرقة الثالثة بكلية علوم الحاسب، مهندس برمجيات فول ستاك ومصمم جرافيك، متخصص في بناء معمارية البرمجيات القوية والمنتجات الرقمية الجذابة بمعايير كبرى شركات التكنولوجيا العالمية (Google & Microsoft) — تركيزي يجمع بين الكفاءة الخوارزمية، الأمان الصارم، والتصميم البصري الاحترافي.",
+      en: "Computer Science undergraduate (Year 3), Full-Stack Software Engineer & Graphic Designer. Focused on high-performance web applications, scalable backend systems, database engineering, and intuitive visual interfaces. Driven by clean code, sound system design, and tangible business impact.",
+      ar: "طالب بالفرقة الثالثة علوم حاسب، مهندس برمجيات فول ستاك ومصمم جرافيك. متخصص في تطوير تطبيقات الويب عالية الأداء، وهندسة الأنظمة الخلفية وقواعد البيانات، وتصميم واجهات مستخدم احترافية تركز على سرعة الاستجابة وتجربة مستخدم متميزة.",
     },
     email: "ahmedmohammed09988771@gmail.com",
     github: "https://github.com/ahmedmohammed977",
@@ -82,9 +82,9 @@ export const portfolioData = {
 
   stats: [
     { value: "3rd Year", label: { en: "Computer Science", ar: "علوم حاسب (الفرقة الثالثة)" } },
-    { value: "100%", label: { en: "Python & MySQL Mastery", ar: "احتراف بايثون وماي إس كيو إل" } },
-    { value: "Full Stack", label: { en: "& Graphic Designer", ar: "وفول ستاك وجرافيك ديزاينر" } },
-    { value: "24/7", label: { en: "Direct Contact Ready", ar: "جاهزية تامة للتواصل والتعاقد" } },
+    { value: "Full-Stack", label: { en: "Web & Backend Systems", ar: "تطبيقات ويب وأنظمة خلفية" } },
+    { value: "Production", label: { en: "Clean SOLID Code", ar: "كود نظيف ومعمارية متماسكة" } },
+    { value: "Open", label: { en: "For Opportunities", ar: "متاح للمشاريع والتعاقد" } },
   ],
 
   skillCategories: [

@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Language, portfolioData } from "@/data/portfolioData";
 import { playCyberClick, playCyberSuccess } from "@/lib/sound";
-import { Terminal as TerminalIcon, Sparkles, CornerDownLeft, Maximize2, Minimize2 } from "lucide-react";
+import { Terminal as TerminalIcon, CornerDownLeft, Maximize2, Minimize2 } from "lucide-react";
 import confetti from "canvas-confetti";
 
 interface TerminalSectionProps {

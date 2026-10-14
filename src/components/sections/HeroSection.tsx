@@ -3,8 +3,9 @@
 import React, { useState } from "react";
 import { Language, portfolioData } from "@/data/portfolioData";
 import { playCyberClick, playCyberSuccess } from "@/lib/sound";
-import { ArrowDown, Copy, Check, Terminal, Sparkles, FileDown, ShieldCheck, Cpu } from "lucide-react";
+import { ArrowDown, Copy, Check, Terminal, FolderGit2, FileDown, ShieldCheck, Cpu } from "lucide-react";
 import confetti from "canvas-confetti";
+import { CyberCore3D } from "@/components/ui/CyberCore3D";
 
 interface HeroSectionProps {
   lang: Language;
@@ -53,6 +54,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
       {/* Background Radial Glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] sm:w-[700px] h-[550px] sm:h-[700px] bg-gradient-to-tr from-cyan-500/15 via-purple-600/10 to-transparent rounded-full blur-[120px] pointer-events-none" />
 
+      {/* 3D Interactive Cyber Core */}
+      <CyberCore3D />
+
       {/* 1. Live Status Badge */}
       <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill border border-cyan-500/30 text-xs font-mono text-cyan-300 shadow-neon-cyan/20 mb-6 animate-float">
         <span className="relative flex h-2 w-2">
@@ -94,7 +98,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
           onClick={() => scrollTo("projects")}
           className="px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-purple-600 text-black font-bold text-xs sm:text-sm tracking-wide shadow-neon-cyan hover:shadow-cyan-400/40 hover:scale-[1.02] active:scale-95 transition-all duration-200 flex items-center gap-2"
         >
-          <Sparkles className="w-4 h-4 shrink-0" />
+          <FolderGit2 className="w-4 h-4 shrink-0" />
           <span>{lang === "ar" ? "استكشف المشاريع" : "Flagship Projects"}</span>
         </button>
 
