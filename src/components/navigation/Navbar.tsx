@@ -138,6 +138,8 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang }) => {
               {soundOn ? <Volume2 className="w-4 h-4 text-cyan-400" /> : <VolumeX className="w-4 h-4 text-zinc-500" />}
             </button>
 
+
+
             {/* Language Toggle (AR / EN) */}
             <button
               onClick={() => {
@@ -147,14 +149,14 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang }) => {
               className="px-2.5 py-1.5 rounded-xl glass-pill text-xs font-mono font-semibold text-zinc-300 hover:text-cyan-300 hover:border-cyan-500/40 transition-all duration-200 flex items-center gap-1.5"
               title={lang === "ar" ? "Switch to English" : "التبديل إلى العربية"}
             >
-              <Globe className="w-3.5 h-3.5 text-purple-400" />
+              <Globe className="w-3.5 h-3.5 text-cyan-400" />
               <span>{lang === "en" ? "عربي" : "EN"}</span>
             </button>
 
             {/* Quick Contact Button */}
             <button
               onClick={() => handleNavClick("contact")}
-              className="hidden sm:flex items-center gap-2 px-4 py-1.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-black font-semibold text-xs tracking-wide shadow-neon-cyan hover:brightness-110 active:scale-95 transition-all duration-200"
+              className="hidden sm:flex items-center gap-2 px-4 py-1.5 rounded-xl bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 text-black font-semibold text-xs tracking-wide shadow-neon-cyan hover:brightness-110 active:scale-95 transition-all duration-200"
             >
               <Send className="w-3.5 h-3.5" />
               <span>{lang === "ar" ? "تواصل معي" : "Hire Me"}</span>
@@ -186,16 +188,19 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang }) => {
           {/* Top Bar inside Mobile Navigation Page */}
           <div className="flex items-center justify-between border-b border-white/10 pb-4">
             <Logo lang={lang} />
-            <button
-              onClick={() => {
-                playCyberClick(700, 0.03);
-                setMobileMenuOpen(false);
-              }}
-              className="p-2.5 rounded-2xl bg-white/5 border border-white/10 text-zinc-300 hover:text-cyan-400 active:scale-95 transition-all"
-              aria-label="Close menu"
-            >
-              <X className="w-6 h-6" />
-            </button>
+            <div className="flex items-center gap-2">
+
+              <button
+                onClick={() => {
+                  playCyberClick(700, 0.03);
+                  setMobileMenuOpen(false);
+                }}
+                className="p-2.5 rounded-2xl bg-white/5 border border-white/10 text-zinc-300 hover:text-cyan-400 active:scale-95 transition-all"
+                aria-label="Close menu"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
           </div>
 
           {/* Navigation Links list */}
@@ -228,7 +233,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang }) => {
           <div className="space-y-4 pt-4 border-t border-white/10">
             <button
               onClick={() => handleNavClick("contact")}
-              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 text-black font-bold text-base text-center shadow-neon-cyan active:scale-95 transition-all flex items-center justify-center gap-2"
+              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 text-black font-bold text-base text-center shadow-neon-cyan active:scale-95 transition-all flex items-center justify-center gap-2"
             >
               <Send className="w-4 h-4" />
               <span>{lang === "ar" ? "ابدأ مشروعك مع أحمد" : "Hire Ahmed Now"}</span>

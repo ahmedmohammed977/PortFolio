@@ -15,6 +15,10 @@ export const CyberBackground: React.FC = () => {
     let camera: THREE.PerspectiveCamera;
 
     const isMobile = window.innerWidth < 768;
+    const isLowPower =
+      isMobile ||
+      (typeof navigator !== "undefined" &&
+        (navigator.hardwareConcurrency ? navigator.hardwareConcurrency <= 4 : false));
 
     try {
       scene = new THREE.Scene();
@@ -27,17 +31,17 @@ export const CyberBackground: React.FC = () => {
 
       renderer = new THREE.WebGLRenderer({
         alpha: true,
-        antialias: !isMobile, // Disable antialiasing on mobile for instant 60fps
+        antialias: !isLowPower, // Disable antialiasing on low-end devices for max fps
         powerPreference: "high-performance",
       });
 
       renderer.setSize(width, height);
-      // Cap pixel ratio to 1.5 max on desktop, 1.0 on mobile to avoid GPU thermal throttling
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobile ? 1 : 1.5));
+      // Cap pixel ratio to 1.5 max on desktop, 1.0 on low-power to avoid GPU thermal throttling
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isLowPower ? 1 : 1.5));
       containerRef.current.appendChild(renderer.domElement);
 
-      // --- 1. Optimized Particles (Scale count down for mobile) ---
-      const particleCount = isMobile ? 160 : 750;
+      // --- 1. Optimized Particles (Scale count down for low-power/mobile) ---
+      const particleCount = isLowPower ? 180 : 650;
       const geometry = new THREE.BufferGeometry();
       const positions = new Float32Array(particleCount * 3);
       const colors = new Float32Array(particleCount * 3);

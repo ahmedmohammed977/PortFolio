@@ -28,10 +28,10 @@ export const Logo: React.FC<LogoProps> = ({ lang = "en", onClick, className = ""
       {/* 3D Holographic Crest */}
       <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shrink-0">
         {/* Outer Pulsing Glow */}
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-cyan-500/30 via-purple-600/30 to-rose-500/30 blur-md group-hover:blur-lg transition-all duration-300 opacity-60 group-hover:opacity-100" />
+        <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-cyan-500/25 via-emerald-500/20 to-teal-400/25 blur-md group-hover:blur-lg transition-all duration-300 opacity-60 group-hover:opacity-100" />
 
         {/* Faceted Shield Body */}
-        <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#090a14] border border-cyan-500/40 group-hover:border-cyan-400 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-105 overflow-hidden">
+        <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#070b12] border border-cyan-500/40 group-hover:border-cyan-400 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-105 overflow-hidden">
           {/* Subtle animated scanline */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-400/10 to-transparent -translate-y-full group-hover:translate-y-full transition-transform duration-700 ease-out" />
 
@@ -44,9 +44,9 @@ export const Logo: React.FC<LogoProps> = ({ lang = "en", onClick, className = ""
           >
             <defs>
               <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#00f0ff" />
-                <stop offset="50%" stopColor="#a855f7" />
-                <stop offset="100%" stopColor="#ff007f" />
+                <stop offset="0%" stopColor="#ffffff" />
+                <stop offset="45%" stopColor="#00f0ff" />
+                <stop offset="100%" stopColor="#10b981" />
               </linearGradient>
             </defs>
             {/* The A Apex */}

@@ -333,8 +333,8 @@ export const portfolioData = {
         ],
       },
       skills: ["Angular 100%", "React 100%", "Next.js", "TypeScript", "Tailwind CSS", "Responsive Design"],
-      gradient: "from-purple-500/20 via-indigo-500/20 to-cyan-500/10",
-      glowColor: "rgba(168, 85, 247, 0.4)",
+      gradient: "from-teal-500/20 via-cyan-500/20 to-emerald-500/10",
+      glowColor: "rgba(0, 240, 255, 0.4)",
     },
     {
       id: "desktop",
@@ -433,8 +433,8 @@ export const portfolioData = {
         ],
       },
       skills: ["Kali Linux 75%", "OWASP Top 10", "Input Sanitization", "Rate Limiting", "Security Headers", "Defensive Coding"],
-      gradient: "from-rose-500/20 via-pink-500/20 to-purple-500/10",
-      glowColor: "rgba(244, 63, 94, 0.4)",
+      gradient: "from-emerald-500/20 via-teal-500/20 to-cyan-500/10",
+      glowColor: "rgba(16, 185, 129, 0.4)",
     },
   ] as ExperiencePillar[],
 

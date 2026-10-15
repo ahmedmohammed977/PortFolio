@@ -11,13 +11,18 @@ import { TerminalSection } from "@/components/sections/TerminalSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Footer } from "@/components/navigation/Footer";
-import { CinematicIntro } from "@/components/intro/CinematicIntro";
-
 import { ScrollRevealSection } from "@/components/ui/ScrollRevealSection";
 
-// Lazy load 3D background with ssr: false for instant FCP performance
+import { CinematicIntro } from "@/components/intro/CinematicIntro";
+
+// Lazy load heavy canvas/cursor dynamic client components with ssr: false
 const CyberBackground = dynamic(
   () => import("@/components/canvas/CyberBackground").then((mod) => mod.CyberBackground),
+  { ssr: false }
+);
+
+const CustomCursor = dynamic(
+  () => import("@/components/ui/CustomCursor").then((mod) => mod.CustomCursor),
   { ssr: false }
 );
 
@@ -77,11 +82,14 @@ export default function Home() {
   return (
     <div
       dir={isRtl ? "rtl" : "ltr"}
-      className={`relative min-h-screen bg-[#050508] text-white overflow-hidden transition-all duration-300 ${
+      className={`relative min-h-screen overflow-hidden bg-[#050508] text-white ${
         isRtl ? "font-arabic" : "font-sans"
       }`}
     >
-      {/* Cinematic Hacker Terminal Intro - Zero-Flash Initial Mount */}
+      {/* High-Tech Monogram Custom Cursor */}
+      {isClient && <CustomCursor />}
+
+      {/* Cinematic Hacker Terminal Intro - Zero-Flash Instant Mount */}
       {showIntro && (
         <CinematicIntro onComplete={handleIntroComplete} lang={lang} />
       )}
@@ -102,7 +110,10 @@ export default function Home() {
         <div className="fixed inset-0 pointer-events-none bg-radial-vignette z-0" />
 
         {/* Floating Glassmorphic Navbar */}
-        <Navbar lang={lang} onToggleLang={handleToggleLang} />
+        <Navbar
+          lang={lang}
+          onToggleLang={handleToggleLang}
+        />
 
         {/* Main Content Sections with Bidirectional Scroll-Triggered Reveal */}
         <main className="relative z-10 space-y-10 sm:space-y-20">

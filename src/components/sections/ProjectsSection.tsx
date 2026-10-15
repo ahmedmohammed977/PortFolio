@@ -15,16 +15,29 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang }) => {
   const [previewProject, setPreviewProject] = useState<Project | null>(null);
   const { projects } = portfolioData;
 
-  const categories = ["All", "Full Stack", "FinTech", "Cloud & Systems", "System Architecture"];
+  const categories = [
+    { key: "All", en: "All", ar: "الكل" },
+    { key: "Full Stack", en: "Full Stack", ar: "فول ستاك" },
+    { key: "FinTech", en: "FinTech", ar: "فينتك مالية" },
+    { key: "Cloud & Systems", en: "Cloud & Systems", ar: "سحابية ونظم" },
+    { key: "System Architecture", en: "Architecture", ar: "معمارية برمجية" },
+  ];
+
+  const categoryLabels: Record<string, { en: string; ar: string }> = {
+    "Full Stack": { en: "Full Stack", ar: "فول ستاك" },
+    "FinTech": { en: "FinTech", ar: "تقنية مالية" },
+    "Cloud & Systems": { en: "Cloud & Systems", ar: "سحابية وبنية تحتية" },
+    "System Architecture": { en: "System Architecture", ar: "معمارية نظم" },
+  };
 
   const filteredProjects =
     selectedCategory === "All"
       ? projects
       : projects.filter((p) => p.category === selectedCategory);
 
-  const handleFilterClick = (cat: string) => {
+  const handleFilterClick = (catKey: string) => {
     playCyberClick(850, 0.03);
-    setSelectedCategory(cat);
+    setSelectedCategory(catKey);
   };
 
   return (
@@ -36,7 +49,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang }) => {
           <span>{lang === "ar" ? "أعمال معتمدة واستثنائية" : "Engineered for Scale"}</span>
         </div>
         <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
-          <span className="gradient-text-cyan-purple font-mono">
+          <span className="gradient-text-senior font-mono">
             {lang === "ar" ? "مشاريع برمجية رائدة" : "Flagship Projects"}
           </span>
         </h2>
@@ -51,15 +64,15 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang }) => {
       <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
         {categories.map((cat) => (
           <button
-            key={cat}
-            onClick={() => handleFilterClick(cat)}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium font-mono transition-all duration-200 ${
-              selectedCategory === cat
-                ? "bg-gradient-to-r from-cyan-500 to-purple-600 text-black font-bold shadow-neon-cyan/50"
-                : "glass-pill text-zinc-400 hover:text-white hover:border-white/20"
+            key={cat.key}
+            onClick={() => handleFilterClick(cat.key)}
+            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium font-mono transition-all duration-200 cursor-pointer ${
+              selectedCategory === cat.key
+                ? "bg-gradient-to-r from-cyan-400 via-teal-400 to-emerald-400 text-black font-extrabold shadow-[0_0_20px_rgba(0,240,255,0.4)]"
+                : "glass-pill text-zinc-400 hover:text-white hover:border-cyan-400/30"
             }`}
           >
-            {cat}
+            {lang === "ar" ? cat.ar : cat.en}
           </button>
         ))}
       </div>
@@ -83,9 +96,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent" />
 
               {/* Category Pill Over Image */}
-              <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-xs font-mono text-cyan-300">
+              <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-cyan-500/30 text-xs font-mono text-cyan-300">
                 <Layers className="w-3 h-3 text-cyan-400" />
-                <span>{project.category}</span>
+                <span>{categoryLabels[project.category] ? categoryLabels[project.category][lang] : project.category}</span>
               </div>
             </div>
 
@@ -103,9 +116,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang }) => {
                 </p>
               </div>
 
-              {/* Business Impact / Metrics Badge */}
-              <div className="flex items-center gap-2 p-3 rounded-xl bg-purple-950/30 border border-purple-500/20 text-purple-300 text-xs font-mono">
-                <TrendingUp className="w-4 h-4 text-purple-400 shrink-0" />
+              {/* Business Impact / Metrics Badge - Senior Emerald/Cyan */}
+              <div className="flex items-center gap-2 p-3 rounded-xl bg-emerald-950/25 border border-emerald-500/30 text-emerald-300 text-xs font-mono">
+                <TrendingUp className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span className="font-semibold">{project.metrics[lang]}</span>
               </div>
 
@@ -130,7 +143,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => playCyberClick(1100, 0.04)}
-                      className="flex-1 min-w-[120px] py-2.5 px-3 rounded-xl bg-gradient-to-r from-cyan-500/20 to-purple-500/20 hover:from-cyan-500/30 hover:to-purple-500/30 border border-cyan-400/40 text-cyan-200 text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] shadow-sm hover:shadow-neon-cyan/20"
+                      className="flex-1 min-w-[120px] py-2.5 px-3 rounded-xl bg-gradient-to-r from-cyan-500/20 via-teal-500/20 to-emerald-500/20 hover:from-cyan-500/35 hover:to-emerald-500/35 border border-cyan-400/40 text-cyan-200 text-xs font-mono font-bold flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] shadow-sm hover:shadow-neon-cyan/20"
                       title={project.liveUrl}
                     >
                       <ExternalLink className="w-3.5 h-3.5 text-cyan-400" />
@@ -143,10 +156,10 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang }) => {
                         playCyberClick(800, 0.03);
                         setPreviewProject(project);
                       }}
-                      className="py-2.5 px-3 rounded-xl glass-pill text-purple-300 hover:text-white border border-purple-500/30 hover:border-purple-400/60 text-xs font-mono flex items-center justify-center gap-1.5 transition-all"
+                      className="py-2.5 px-3 rounded-xl glass-pill text-cyan-300 hover:text-white border border-cyan-500/30 hover:border-cyan-400/60 text-xs font-mono flex items-center justify-center gap-1.5 transition-all cursor-pointer"
                       title={lang === "ar" ? "معاينة سريعة داخل الصفحة" : "In-page live preview"}
                     >
-                      <Eye className="w-3.5 h-3.5 text-purple-400" />
+                      <Eye className="w-3.5 h-3.5 text-cyan-400" />
                       <span>{lang === "ar" ? "معاينة سريعة" : "Preview"}</span>
                     </button>
                   </>

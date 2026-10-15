@@ -68,7 +68,7 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang }) => {
       case "help":
         res = (
           <div className="space-y-1.5 py-1">
-            <p className="text-purple-400 font-bold">
+            <p className="text-cyan-400 font-bold">
               {lang === "ar" ? "الأوامر المتاحة:" : "Available System Commands:"}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 text-xs">
@@ -110,10 +110,10 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang }) => {
         res = (
           <div className="p-3 rounded-lg bg-white/5 border border-white/5 space-y-1 text-xs">
             <p className="text-white font-bold">{portfolioData.personal.fullName[lang]}</p>
-            <p className="text-cyan-400 font-mono">AKA: {portfolioData.personal.alias[lang]}</p>
+            <p className="text-cyan-400 font-mono">{lang === "ar" ? "الاسم المستعار: " : "AKA: "}{portfolioData.personal.alias[lang]}</p>
             <p className="text-zinc-300">{portfolioData.personal.title[lang]}</p>
             <p className="text-zinc-400">{portfolioData.personal.bio[lang]}</p>
-            <p className="text-emerald-400">Status: {portfolioData.personal.badgeStatus[lang]}</p>
+            <p className="text-emerald-400">{lang === "ar" ? "الحالة: " : "Status: "}{portfolioData.personal.badgeStatus[lang]}</p>
           </div>
         );
         break;
@@ -121,14 +121,14 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang }) => {
       case "skills":
         res = (
           <div className="space-y-1.5 text-xs text-zinc-300">
-            <p className="text-purple-400 font-bold">
+            <p className="text-cyan-400 font-bold">
               {lang === "ar" ? "⚡ الكفاءات والخبرات البرمجية المعتمدة:" : "⚡ Verified Technical Mastery & Proficiency:"}
             </p>
             <p>• <span className="text-emerald-400 font-bold">Python: 100%</span> | <span className="text-emerald-400 font-bold">MySQL Database: 100%</span></p>
             <p>• <span className="text-cyan-400 font-bold">JavaScript: 95%</span> | <span className="text-cyan-400 font-bold">TypeScript: 95%</span></p>
             <p>• <span className="text-amber-400 font-bold">{lang === "ar" ? "الهندسة الأساسية: 90%" : "Core Engineering: 90%"}</span> (Java, C++, C#, Angular, Django, REST APIs, OOP, DSA, Git & GitHub)</p>
-            <p>• <span className="text-pink-400 font-bold">{lang === "ar" ? "الأدوات المتخصصة:" : "Specialized Tools:"}</span> VS Code (95%), Kali Linux (90%), Canva (95%), PowerPoint (95%), Word (95%), Excel (95%)</p>
-            <p>• <span className="text-indigo-400 font-bold">{lang === "ar" ? "مجال التصميم:" : "Design Domain:"}</span> {lang === "ar" ? "مصمم جرافيك محترف (UI/UX، الهوية البصرية، الموشن ميديا)" : "Professional Graphic Designer (UI/UX, Visual Branding, Motion & Social Identity)"}</p>
+            <p>• <span className="text-zinc-300 font-bold">{lang === "ar" ? "الأدوات المتخصصة:" : "Specialized Tools:"}</span> VS Code (95%), Kali Linux (90%), Canva (95%), PowerPoint (95%), Word (95%), Excel (95%)</p>
+            <p>• <span className="text-teal-400 font-bold">{lang === "ar" ? "مجال التصميم:" : "Design Domain:"}</span> {lang === "ar" ? "مصمم جرافيك محترف (UI/UX، الهوية البصرية، الموشن ميديا)" : "Professional Graphic Designer (UI/UX, Visual Branding, Motion & Social Identity)"}</p>
           </div>
         );
         break;
@@ -149,7 +149,7 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang }) => {
                     rel="noopener noreferrer"
                     className="text-cyan-400 text-[10px] underline block mt-1"
                   >
-                    🚀 Live Demo: {p.liveUrl}
+                    🚀 {lang === "ar" ? "معاينة مباشرة: " : "Live Demo: "}{p.liveUrl}
                   </a>
                 )}
               </div>
@@ -161,10 +161,10 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang }) => {
       case "contact":
         res = (
           <div className="space-y-1 text-xs">
-            <p className="text-cyan-300 font-bold">📬 Direct Channels:</p>
-            <p>Email: <a href={`mailto:${portfolioData.personal.email}`} className="text-cyan-400 underline">{portfolioData.personal.email}</a></p>
-            <p>Phone / WhatsApp: <a href={`https://wa.me/201121742874`} target="_blank" rel="noopener noreferrer" className="text-emerald-400 underline">01121742874</a></p>
-            <p>Location: {portfolioData.personal.location[lang]}</p>
+            <p className="text-cyan-300 font-bold">{lang === "ar" ? "📬 قنوات الاتصال المباشرة:" : "📬 Direct Channels:"}</p>
+            <p>{lang === "ar" ? "البريد الإلكتروني: " : "Email: "}<a href={`mailto:${portfolioData.personal.email}`} className="text-cyan-400 underline">{portfolioData.personal.email}</a></p>
+            <p>{lang === "ar" ? "الهاتف / واتساب: " : "Phone / WhatsApp: "}<a href={`https://wa.me/201121742874`} target="_blank" rel="noopener noreferrer" className="text-emerald-400 underline">01121742874</a></p>
+            <p>{lang === "ar" ? "الموقع: " : "Location: "}{portfolioData.personal.location[lang]}</p>
           </div>
         );
         break;
@@ -177,14 +177,16 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang }) => {
             particleCount: 80,
             spread: 90,
             origin: { y: 0.6 },
-            colors: ["#00f0ff", "#a855f7", "#ec4899", "#10b981"],
+            colors: ["#00f0ff", "#10b981", "#ffffff", "#38bdf8"],
           });
         } catch {
           // ignore
         }
         res = (
           <div className="p-4 rounded-xl bg-gradient-to-r from-emerald-950/60 to-cyan-950/60 border border-emerald-400/40 text-emerald-300 space-y-2">
-            <p className="font-bold text-sm">🎉 ACCESS GRANTED: Priority Client Route Unlocked!</p>
+            <p className="font-bold text-sm">
+              {lang === "ar" ? "🎉 تم منح الإذن: تم تفعيل مسار العميل ذو الأولوية!" : "🎉 ACCESS GRANTED: Priority Client Route Unlocked!"}
+            </p>
             <p className="text-xs text-zinc-300">
               {lang === "ar"
                 ? "تم فتح قناة التواصل المباشرة الفورية مع أحمد طشطش. اضغط على الزر أدناه لإرسال استفسارك فوراً."
@@ -209,8 +211,17 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang }) => {
       default:
         res = (
           <p className="text-rose-400 text-xs">
-            Command not recognized: <span className="font-mono underline">{rawCmd}</span>. Type{" "}
-            <span className="text-cyan-400 font-mono font-bold">help</span> to view available system commands.
+            {lang === "ar" ? (
+              <>
+                الأمر غير معروف: <span className="font-mono underline">{rawCmd}</span>. اكتب{" "}
+                <span className="text-cyan-400 font-mono font-bold">help</span> لعرض الأوامر المتاحة.
+              </>
+            ) : (
+              <>
+                Command not recognized: <span className="font-mono underline">{rawCmd}</span>. Type{" "}
+                <span className="text-cyan-400 font-mono font-bold">help</span> to view available system commands.
+              </>
+            )}
           </p>
         );
     }
@@ -253,7 +264,7 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang }) => {
           <span>{lang === "ar" ? "وحدة تحكم تفاعلية للمطورين" : "Interactive Developer Console"}</span>
         </div>
         <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
-          <span className="gradient-text-cyan-purple font-mono">
+          <span className="gradient-text-senior font-mono">
             {lang === "ar" ? "تيرمينال المهندس الحي" : "Live Cyber Terminal"}
           </span>
         </h2>
@@ -307,7 +318,7 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang }) => {
           {logs.map((log, idx) => (
             <div key={idx} className="space-y-1">
               <div className="flex items-center gap-2 text-xs sm:text-sm text-cyan-400">
-                <span className="text-purple-400">❯</span>
+                <span className="text-emerald-400">❯</span>
                 <span className="text-zinc-500">tash$</span>
                 <span className="text-white font-bold">{log.cmd}</span>
               </div>
@@ -317,7 +328,7 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang }) => {
 
           {/* Current Input Line */}
           <div className="flex items-center gap-2 text-xs sm:text-sm text-cyan-400 pt-1 min-w-0">
-            <span className="text-purple-400 animate-pulse shrink-0">❯</span>
+            <span className="text-emerald-400 animate-pulse shrink-0">❯</span>
             <span className="text-zinc-500 shrink-0">tash$</span>
             <input
               ref={inputRef}

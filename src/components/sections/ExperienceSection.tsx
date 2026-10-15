@@ -30,7 +30,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
       case "python":
         return <Terminal className="w-5 h-5 text-cyan-400" />;
       case "frontend":
-        return <Code2 className="w-5 h-5 text-purple-400" />;
+        return <Code2 className="w-5 h-5 text-emerald-400" />;
       case "desktop":
         return <Monitor className="w-5 h-5 text-emerald-400" />;
       case "backend":
@@ -38,7 +38,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
       case "database":
         return <Database className="w-5 h-5 text-blue-400" />;
       case "security":
-        return <ShieldCheck className="w-5 h-5 text-rose-400" />;
+        return <ShieldCheck className="w-5 h-5 text-teal-400" />;
       default:
         return <Briefcase className="w-5 h-5 text-cyan-400" />;
     }
@@ -53,7 +53,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
           <span>{lang === "ar" ? "سجل الخبرة الهندسية وسنوات الإنجاز" : "Verified Engineering Record"}</span>
         </div>
         <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
-          <span className="gradient-text-cyan-purple font-mono">
+          <span className="gradient-text-senior font-mono">
             {lang === "ar" ? "سنوات الخبرة والمحطات العملية" : "Core Experience & Track Record"}
           </span>
         </h2>
@@ -112,7 +112,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
                     <h4 className="text-lg sm:text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
                       {pillar.title[lang]}
                     </h4>
-                    <span className="text-xs font-mono text-purple-400 block font-semibold">
+                    <span className="text-xs font-mono text-emerald-400 block font-semibold">
                       {pillar.category[lang]}
                     </span>
                   </div>
@@ -152,7 +152,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
 
       {/* 2. Chronological Milestones Timeline Header */}
       <div className="flex items-center gap-2 mb-8 px-1">
-        <Briefcase className="w-4 h-4 text-purple-400" />
+        <Briefcase className="w-4 h-4 text-cyan-400" />
         <h3 className="text-lg sm:text-xl font-bold text-white font-mono">
           {lang === "ar" ? "المسار الوظيفي والمحطات التطبيقية" : "Career Timeline & Industry Roles"}
         </h3>
@@ -174,7 +174,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
                   <h4 className="text-lg sm:text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
                     {item.role[lang]}
                   </h4>
-                  <p className="text-sm font-semibold text-purple-400 font-mono mt-0.5">
+                  <p className="text-sm font-semibold text-cyan-300 font-mono mt-0.5">
                     {item.company[lang]}
                   </p>
                 </div>

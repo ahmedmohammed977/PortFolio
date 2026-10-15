@@ -56,10 +56,10 @@ export const CyberCore3D: React.FC = () => {
 
       {/* Counter-rotating Orbital Ring */}
       <div
-        className="absolute inset-2 sm:inset-3 rounded-full border border-purple-500/25 animate-spin [animation-duration:9s] [animation-direction:reverse] pointer-events-none"
+        className="absolute inset-2 sm:inset-3 rounded-full border border-emerald-500/25 animate-spin [animation-duration:9s] [animation-direction:reverse] pointer-events-none"
         style={{ transformStyle: "preserve-3d" }}
       >
-        <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-purple-400 shadow-[0_0_8px_#c084fc]" />
+        <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981]" />
       </div>
 
       {/* 3D Wireframe Cyber Cube (Hardware-Accelerated CSS 3D) */}
@@ -81,7 +81,7 @@ export const CyberCore3D: React.FC = () => {
 
         {/* Back */}
         <div
-          className="absolute inset-0 border border-purple-500/60 bg-purple-500/10 backdrop-blur-[2px] shadow-[inset_0_0_12px_rgba(168,85,247,0.2)] flex items-center justify-center text-[10px] font-mono text-purple-300 font-bold"
+          className="absolute inset-0 border border-emerald-500/60 bg-emerald-500/10 backdrop-blur-[2px] shadow-[inset_0_0_12px_rgba(16,185,129,0.2)] flex items-center justify-center text-[10px] font-mono text-emerald-300 font-bold"
           style={{ transform: "rotateY(180deg) translateZ(30px)" }}
         >
           <span>0x1</span>
@@ -105,7 +105,7 @@ export const CyberCore3D: React.FC = () => {
 
         {/* Top */}
         <div
-          className="absolute inset-0 border border-purple-400/60 bg-purple-500/10 backdrop-blur-[2px] shadow-[inset_0_0_12px_rgba(192,132,252,0.2)] flex items-center justify-center text-[10px] font-mono text-purple-300 font-bold"
+          className="absolute inset-0 border border-cyan-400/60 bg-cyan-500/10 backdrop-blur-[2px] shadow-[inset_0_0_12px_rgba(0,240,255,0.2)] flex items-center justify-center text-[10px] font-mono text-cyan-300 font-bold"
           style={{ transform: "rotateX(90deg) translateZ(30px)" }}
         >
           <span>API</span>
@@ -121,7 +121,7 @@ export const CyberCore3D: React.FC = () => {
 
         {/* Glowing Central Quantum Node */}
         <div
-          className="absolute inset-4 rounded-full bg-gradient-to-tr from-cyan-400 to-purple-500 blur-[2px] animate-pulse"
+          className="absolute inset-4 rounded-full bg-gradient-to-tr from-cyan-400 to-emerald-400 blur-[2px] animate-pulse"
           style={{ transform: "translateZ(0px)" }}
         />
       </div>
